@@ -13,8 +13,8 @@ public class Application {
 		return new HiddenHttpMethodFilter();
 	}
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
 
 }
