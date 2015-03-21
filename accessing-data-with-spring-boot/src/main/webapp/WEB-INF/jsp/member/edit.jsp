@@ -24,8 +24,28 @@
 		</thead>
 		<tbody>
 			<tr>
+				<th>id</th>
+				<td>${member.id}</td>
+			</tr>
+			<tr>
 				<th>name</th>
 				<td><form:input path="name" /></td>
+			</tr>
+			<tr>
+				<th>password</th>
+				<td><form:input path="password" /></td>
+			</tr>
+			<tr>
+				<th>group</th>
+				<td><form:input path="group.id" /></td>
+			</tr>
+			<tr>
+				<th>email#1</th>
+				<td><form:input path="emails[0].value" /></td>
+			</tr>
+			<tr>
+				<th>email#2</th>
+				<td><form:input path="emails[1].value" /></td>
 			</tr>
 		</tbody>
 	</table>

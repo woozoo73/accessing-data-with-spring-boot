@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bluedigm.adwsb.BaseComponent;
-import com.bluedigm.adwsb.domain.Email;
 import com.bluedigm.adwsb.domain.Group;
 import com.bluedigm.adwsb.domain.Member;
 import com.bluedigm.adwsb.repository.EmailRepository;
@@ -14,6 +14,7 @@ import com.bluedigm.adwsb.repository.GroupRepository;
 import com.bluedigm.adwsb.repository.MemberRepository;
 
 @Service
+@Transactional
 public class MemberServiceImpl extends BaseComponent implements MemberService {
 
 	@Autowired
@@ -65,9 +66,7 @@ public class MemberServiceImpl extends BaseComponent implements MemberService {
 	@Override
 	public void createMember(Member member) {
 		if (member.getEmails() != null) {
-			for (Email email : member.getEmails()) {
-				emailRepository.save(email);
-			}
+			emailRepository.save(member.getEmails());
 		}
 		memberRepository.save(member);
 	}
@@ -75,9 +74,7 @@ public class MemberServiceImpl extends BaseComponent implements MemberService {
 	@Override
 	public void updateMember(Member member) {
 		if (member.getEmails() != null) {
-			for (Email email : member.getEmails()) {
-				emailRepository.save(email);
-			}
+			emailRepository.save(member.getEmails());
 		}
 		memberRepository.save(member);
 	}
