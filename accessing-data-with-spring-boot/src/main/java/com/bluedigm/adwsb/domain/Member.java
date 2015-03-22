@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Member {
@@ -25,6 +26,9 @@ public class Member {
 
 	@OneToMany
 	private List<Email> emails;
+
+	@Transient
+	private Profile profile;
 
 	public String getId() {
 		return id;
@@ -66,6 +70,14 @@ public class Member {
 		this.emails = emails;
 	}
 
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -79,6 +91,8 @@ public class Member {
 		builder.append(group);
 		builder.append(", emails=");
 		builder.append(emails);
+		builder.append(", profile=");
+		builder.append(profile);
 		builder.append("]");
 		return builder.toString();
 	}

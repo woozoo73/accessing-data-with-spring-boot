@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -10,27 +11,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>groups-new</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 
+	<ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/groups">Groups</a></li>
+		<li><a href="/members">Members</a></li>
+	</ul>
+
+	<h1>Groups-new</h1>
+
 	<form:form commandName="group">
-	<table>
-		<thead>
-			<tr>
-				<th>field</th>
-				<th>value</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th>name</th>
-				<td><form:input path="name" /></td>
-			</tr>
-		</tbody>
-	</table>
-	<input type="submit" />
+		<table>
+			<thead>
+				<tr>
+					<th>field</th>
+					<th>value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>name</th>
+					<td><form:input path="name" /></td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="submit" />
 	</form:form>
-	
+
 	<a href="/groups">list</a>
 
 </body>
