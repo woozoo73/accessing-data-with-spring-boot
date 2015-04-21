@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity(name = "groups")
 public class Group {
 
@@ -13,6 +15,7 @@ public class Group {
 	private Integer id;
 
 	@Column(nullable = false)
+	@NotEmpty
 	private String name;
 
 	public Integer getId() {

@@ -34,7 +34,10 @@
 			<tbody>
 				<tr>
 					<th>name</th>
-					<td><form:input path="name" /></td>
+					<td>
+						<form:input path="name" />
+						<form:errors path="name" cssClass="error" />
+					</td>
 				</tr>
 			</tbody>
 		</table>

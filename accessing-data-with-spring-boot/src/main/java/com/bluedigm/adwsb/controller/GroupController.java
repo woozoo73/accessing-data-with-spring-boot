@@ -2,9 +2,12 @@ package com.bluedigm.adwsb.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +46,11 @@ public class GroupController extends BaseComponent {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String create(@ModelAttribute Group group) {
+	public String create(@Valid Group group, BindingResult result) {
+		if (result.hasErrors()) {
+			return "group/new";
+		}
+
 		memberService.createGroup(group);
 
 		return "redirect:/groups";
@@ -58,7 +65,11 @@ public class GroupController extends BaseComponent {
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-	public String update(@ModelAttribute Group group) {
+	public String update(@Valid Group group, BindingResult result) {
+		if (result.hasErrors()) {
+			return "group/new";
+		}
+
 		memberService.updateGroup(group);
 
 		return "redirect:/groups";

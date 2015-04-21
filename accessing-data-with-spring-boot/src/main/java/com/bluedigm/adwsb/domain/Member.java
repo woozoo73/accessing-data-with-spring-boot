@@ -8,23 +8,31 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Member {
 
 	@Id
+	@NotEmpty
 	private String id;
 
 	@Column(nullable = false)
+	@NotEmpty
 	private String password;
 
 	@Column(nullable = false)
+	@NotEmpty
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Group group;
 
 	@OneToMany
+	@NotEmpty
+	@Valid
 	private List<Email> emails;
 
 	@Transient

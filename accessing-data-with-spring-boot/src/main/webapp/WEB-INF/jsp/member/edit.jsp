@@ -41,26 +41,41 @@
 				</tr>
 				<tr>
 					<th>name</th>
-					<td><form:input path="name" /></td>
+					<td>
+						<form:input path="name" />
+						<form:errors path="name" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th>password</th>
-					<td><form:input path="password" /></td>
+					<td>
+						<form:input path="password" />
+						<form:errors path="password" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th>group</th>
-					<td><form:input path="group.id" /></td>
+					<td>
+						<form:input path="group.id" />
+						<form:errors path="group.id" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th colspan="2">emails</th>
 				</tr>
 				<tr>
 					<th>email#1</th>
-					<td><form:input path="emails[0].value" /></td>
+					<td>
+						<form:input path="emails[0].value" />
+						<form:errors path="emails[0].value" cssClass="error" />
+					</td>
 				</tr>
 				<tr>
 					<th>email#2</th>
-					<td><form:input path="emails[1].value" /></td>
+					<td>
+						<form:input path="emails[1].value" />
+						<form:errors path="emails[1].value" cssClass="error" />
+					</td>
 				</tr>
 			</tbody>
 		</table>

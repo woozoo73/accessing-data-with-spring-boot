@@ -2,15 +2,19 @@ package com.bluedigm.adwsb.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bluedigm.adwsb.BaseComponent;
+import com.bluedigm.adwsb.domain.Group;
 import com.bluedigm.adwsb.domain.Member;
 import com.bluedigm.adwsb.service.MemberService;
 
@@ -43,7 +47,20 @@ public class MemberController extends BaseComponent {
 	}
 
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String create(@ModelAttribute Member member) {
+	public String create(@Valid Member member, BindingResult result) {
+		if (member.getGroup().getId() == null) {
+			result.rejectValue("group.id", "NotEmpty");
+		} else {
+			Group group = memberService.getGroup(member.getGroup().getId());
+			if (group == null) {
+				result.rejectValue("group.id", "Invalid");
+			}
+		}
+
+		if (result.hasErrors()) {
+			return "member/new";
+		}
+
 		memberService.createMember(member);
 
 		return "redirect:/members";
@@ -58,7 +75,20 @@ public class MemberController extends BaseComponent {
 	}
 
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-	public String update(@ModelAttribute Member member) {
+	public String update(@Valid Member member, BindingResult result) {
+		if (member.getGroup().getId() == null) {
+			result.rejectValue("group.id", "NotEmpty");
+		} else {
+			Group group = memberService.getGroup(member.getGroup().getId());
+			if (group == null) {
+				result.rejectValue("group.id", "Invalid");
+			}
+		}
+
+		if (result.hasErrors()) {
+			return "member/edit";
+		}
+
 		memberService.updateMember(member);
 
 		return "redirect:/members";

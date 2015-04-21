@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Email {
 
@@ -11,6 +13,8 @@ public class Email {
 	@GeneratedValue
 	private Integer id;
 
+	@NotEmpty
+	@org.hibernate.validator.constraints.Email
 	private String value;
 
 	public Integer getId() {

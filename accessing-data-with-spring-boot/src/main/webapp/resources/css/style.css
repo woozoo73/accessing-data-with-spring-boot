@@ -12,3 +12,9 @@ th {
 	background-color: green;
 	color: white;
 }
+
+.error {
+    color: #ff0000;
+    font-style: italic;
+    font-weight: bold;
+}
